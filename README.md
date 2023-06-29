@@ -82,9 +82,9 @@ This mod uses the credentials configured in the [Steampipe AWS plugin](https://h
 
 No extra configuration is required.
 
-### Common and Tag Dimensions
+### Common Dimensions
 
-The benchmark queries use common properties (like `account_id`, `connection_name` and `region`) and tags that are defined in the dependent [AWS Compliance mod](https://github.com/turbot/steampipe-mod-aws-compliance). These properties can be executed in the following ways:
+The benchmark queries use common properties (like `account_id`, `connection_name` and `region`) that are defined in the dependent [AWS Compliance mod](https://github.com/turbot/steampipe-mod-aws-compliance). These properties can be executed in the following ways:
 
 - Copy and rename the `steampipe.spvars.example` file to `steampipe.spvars`, and then modify the variable values inside that file
 
@@ -92,10 +92,6 @@ The benchmark queries use common properties (like `account_id`, `connection_name
 
   ```shell
   steampipe check benchmark.no-secrets --var 'common_dimensions=["account_id", "connection_name", "region"]'
-  ```
-
-  ```shell
-  steampipe check benchmark.security --var 'tag_dimensions=["Environment", "Owner"]'
   ```
 
 ## Contributing

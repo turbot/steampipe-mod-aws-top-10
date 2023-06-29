@@ -59,7 +59,7 @@ mod "aws_security_top_10" {
   #color         = "#FF9900"
   #documentation = file("./docs/index.md")
   #icon          = "/images/mods/turbot/aws-well-architected.svg"
-  #categories    = ["aws", "security"]
+  categories    = ["aws", "security"]
 
   opengraph {
     title       = "Steampipe Mod for AWS Security Top 10"
@@ -74,7 +74,7 @@ mod "aws_security_top_10" {
     mod "github.com/turbot/steampipe-mod-aws-compliance" {
       version = ">=0.66.0"
       args = {
-        common_dimensions = var.common_dimensions,
+        common_dimensions = var.common_dimensions
         tag_dimensions    = var.tag_dimensions
       }
     }
