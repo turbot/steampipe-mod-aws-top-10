@@ -1,13 +1,13 @@
 locals {
   aws_top_10_tags = {
-    category = " AWS Top 10"
-    service = " AWS Top 10"
+    category = " AWS Security Top 10"
+    service = " AWS Security Top 10"
     type = "Benchmark"
   }
 }
 
 benchmark "aws_top_10" {
-  title       = "AWS Top 10"
+  title       = "AWS Security Top 10"
   description = "The top 10 AWS security items recommended on the AWS Security blog."
 
   children = [
@@ -53,7 +53,7 @@ benchmark "no_secrets" {
     aws_compliance.control.ec2_instance_user_data_no_secrets
   ]
 
-  tags = local.aws_top_10_tags 
+  tags = local.aws_top_10_tags
 }
 
 benchmark "limit_security_groups" {
@@ -93,7 +93,7 @@ benchmark "centralize_cloudtrail_logs" {
     aws_compliance.control.foundational_security_cloudtrail_5,
     aws_compliance.benchmark.foundational_security_cloudtrail
   ]
-  
+
   tags = local.aws_top_10_tags
 }
 
@@ -115,7 +115,7 @@ benchmark "take_action_on_findings" {
     aws_compliance.control.guardduty_no_high_severity_findings,
     aws_compliance.control.cis_v150_4_16
   ]
-  
+
   tags = local.aws_top_10_tags
 }
 
@@ -127,7 +127,7 @@ benchmark "rotate_keys" {
     aws_compliance.control.cis_v150_1_14
   ]
 
-  tags = local.aws_top_10_tags  
+  tags = local.aws_top_10_tags
 }
 
 

@@ -54,7 +54,7 @@ locals {
 
 mod "aws_security_top_10" {
   # hub metadata
-  title         = "AWS Security Top 10"
+  title         = " AWS Security Top 10"
   description   = "Check the top security items recommended on the AWS Security blog."
   #color         = "#FF9900"
   #documentation = file("./docs/index.md")
