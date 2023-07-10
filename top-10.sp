@@ -11,7 +11,7 @@ benchmark "aws_top_10" {
   description = "The top 10 AWS security items recommended on the AWS Security blog."
 
   children = [
-    benchmark.accurate_account_info,
+    benchmark.aws_top_10_security_accurate_account_info,
     benchmark.use_mfa,
     benchmark.no_secrets,
     benchmark.limit_security_groups,
