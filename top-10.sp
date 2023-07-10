@@ -30,8 +30,8 @@ benchmark "aws_top_10_security_use_mfa" {
   title = "2. Use multi-factor authentication (MFA)"
   children = [
     aws_compliance.control.iam_root_user_mfa_enabled,
-    aws_compliance.control.iam_user_mfa_enabled,
     aws_compliance.control.iam_user_console_access_mfa_enabled,
+    aws_compliance.control.iam_user_mfa_enabled
   ]
 
   tags = local.aws_top_10_tags
@@ -41,8 +41,8 @@ benchmark "aws_top_10_security_no_secrets" {
   title = "3. No hard-coding secrets"
   children = [
     aws_compliance.control.cloudformation_stack_output_no_secrets,
-    aws_compliance.control.ecs_task_definition_container_environment_no_secret,
-    aws_compliance.control.ec2_instance_user_data_no_secrets
+    aws_compliance.control.ec2_instance_user_data_no_secrets,
+    aws_compliance.control.ecs_task_definition_container_environment_no_secret
   ]
 
   tags = local.aws_top_10_tags
@@ -51,16 +51,16 @@ benchmark "aws_top_10_security_no_secrets" {
 benchmark "aws_top_10_security_limit_security_groups" {
   title = "4. Limit security groups"
   children = [
-    aws_compliance.control.vpc_security_group_restricted_common_ports,
+    aws_compliance.control.ec2_instance_no_launch_wizard_security_group,
     aws_compliance.control.vpc_security_group_allows_ingress_authorized_ports,
-    aws_compliance.control.vpc_security_group_restrict_ingress_redis_port,
-    aws_compliance.control.vpc_security_group_allows_ingress_to_oracle_ports,
-    aws_compliance.control.vpc_security_group_allows_ingress_to_mongodb_ports,
-    aws_compliance.control.vpc_security_group_allows_ingress_to_memcached_port,
     aws_compliance.control.vpc_security_group_allows_ingress_to_cassandra_ports,
+    aws_compliance.control.vpc_security_group_allows_ingress_to_memcached_port,
+    aws_compliance.control.vpc_security_group_allows_ingress_to_mongodb_ports,
+    aws_compliance.control.vpc_security_group_allows_ingress_to_oracle_ports,
     aws_compliance.control.vpc_security_group_restrict_ingress_kafka_port,
-    aws_compliance.control.ec2_instance_no_launch_wizard_security_group
-  ]
+    aws_compliance.control.vpc_security_group_restrict_ingress_redis_port,
+    aws_compliance.control.vpc_security_group_restricted_common_ports
+]
 
   tags = local.aws_top_10_tags
 }
@@ -68,11 +68,11 @@ benchmark "aws_top_10_security_limit_security_groups" {
 benchmark "aws_top_10_security_intentional_data_policies" {
   title = "5. Intentional data policies"
   children = [
-    aws_compliance.control.foundational_security_s3_6,
-    aws_compliance.control.s3_public_access_block_bucket_account,
     aws_compliance.control.foundational_security_s3_1,
     aws_compliance.control.foundational_security_s3_2,
-    aws_compliance.control.foundational_security_s3_3
+    aws_compliance.control.foundational_security_s3_3,
+    aws_compliance.control.foundational_security_s3_6,
+    aws_compliance.control.s3_public_access_block_bucket_account,
   ]
 
   tags = local.aws_top_10_tags
@@ -81,9 +81,9 @@ benchmark "aws_top_10_security_intentional_data_policies" {
 benchmark "aws_top_10_security_centralize_cloudtrail_logs" {
   title = "6. Centralize CloudTrail logs"
   children = [
+    aws_compliance.benchmark.foundational_security_cloudtrail,
     aws_compliance.control.foundational_security_cloudtrail_1,
     aws_compliance.control.foundational_security_cloudtrail_5,
-    aws_compliance.benchmark.foundational_security_cloudtrail
   ]
 
   tags = local.aws_top_10_tags
@@ -103,9 +103,9 @@ benchmark "aws_top_10_security_validate_iam_roles" {
 benchmark "aws_top_10_security_take_action_on_findings" {
   title = "8. Take action on findings"
   children = [
+    aws_compliance.control.cis_v150_4_16,
     aws_compliance.control.foundational_security_guardduty_1,
     aws_compliance.control.guardduty_no_high_severity_findings,
-    aws_compliance.control.cis_v150_4_16
   ]
 
   tags = local.aws_top_10_tags
