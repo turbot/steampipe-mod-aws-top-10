@@ -1,3 +1,11 @@
+locals {
+  aws_top_10_tags = {
+    category = " AWS Security Top 10"
+    service = " AWS Security Top 10"
+    type = "Benchmark"
+  }
+}
+
 variable "common_dimensions" {
   type        = list(string)
   description = "A list of common dimensions to add to each control."
