@@ -129,7 +129,3 @@ benchmark "rotate_keys" {
 
   tags = local.aws_top_10_tags
 }
-
-
-
-
