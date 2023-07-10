@@ -6,7 +6,7 @@ locals {
   }
 }
 
-benchmark "aws_top_10" {
+benchmark "aws_top_10_security" {
   title       = "AWS Security Top 10"
   description = "The top 10 AWS security items recommended on the AWS Security blog."
 
