@@ -84,7 +84,7 @@ mod "aws_security_top_10" {
       }
     }
     mod "github.com/turbot/steampipe-mod-aws-perimeter" {
-      version = "*"
+      version = ">=0.5.0"
     }
   }
 }
