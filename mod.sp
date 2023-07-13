@@ -1,8 +1,7 @@
 locals {
-  aws_top_10_tags = {
-    category = "Security"
-    service = "AWS"
-    type = "Benchmark"
+  aws_top_10_common_tags = {
+    plugin   = "aws"
+    service  = "AWS"
   }
 }
 
@@ -27,7 +26,6 @@ variable "tag_dimensions" {
 }
 
 locals {
-
   # Local internal variable to build the SQL select clause for common
   # dimensions using a table name qualifier if required. Do not edit directly.
   common_dimensions_qualifier_sql = <<-EOQ
@@ -46,38 +44,35 @@ locals {
   tag_dimensions_qualifier_sql = <<-EOQ
   %{~for dim in var.tag_dimensions},  __QUALIFIER__tags ->> '${dim}' as "${replace(dim, "\"", "\"\"")}"%{endfor~}
   EOQ
-
 }
 
 locals {
-
   # Local internal variable with the full SQL select clause for common
   # dimensions. Do not edit directly.
   common_dimensions_sql        = replace(local.common_dimensions_qualifier_sql, "__QUALIFIER__", "")
   common_dimensions_global_sql = replace(local.common_dimensions_qualifier_global_sql, "__QUALIFIER__", "")
   tag_dimensions_sql           = replace(local.tag_dimensions_qualifier_sql, "__QUALIFIER__", "")
-
 }
 
-
-mod "aws_security_top_10" {
+mod "aws_top_10" {
   # hub metadata
-  title         = "AWS Security Top 10"
+  title         = "AWS Top 10"
   description   = "Check the top security items recommended on the AWS Security blog."
-  #color         = "#FF9900"
-  #documentation = file("./docs/index.md")
-  #icon          = "/images/mods/turbot/aws-well-architected.svg"
-  categories    = ["aws", "security"]
+  color         = "#FF9900"
+  documentation = file("./docs/index.md")
+  # TODO: Create this image
+  icon          = "/images/mods/turbot/aws-top-10.svg"
+  categories    = ["aws", "public cloud", "security"]
 
   opengraph {
-    title       = "Steampipe Mod for AWS Security Top 10"
+    title       = "Steampipe Mod for AWS Top 10"
     description = "Run controls across all of your AWS accounts and regions to check the top 10 security items recommended on the AWS Security blog."
-    image       = "/images/mods/turbot/aws-well-architected-social-graphic.png"
+    image       = "/images/mods/turbot/aws-top-10-social-graphic.png"
   }
 
   require {
     mod "github.com/turbot/steampipe-mod-aws-compliance" {
-      version = ">=0.66.0"
+      version = ">=0.76.0"
       args = {
         common_dimensions = var.common_dimensions
         tag_dimensions    = var.tag_dimensions
@@ -85,7 +80,10 @@ mod "aws_security_top_10" {
     }
     mod "github.com/turbot/steampipe-mod-aws-perimeter" {
       version = ">=0.5.0"
+      args = {
+        common_dimensions = var.common_dimensions
+        tag_dimensions    = var.tag_dimensions
+      }
     }
   }
 }
-

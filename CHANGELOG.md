@@ -1,6 +1,5 @@
-## v0.1 [2023-07-05]
+## v0.1 [TBD]
 
 _What's new?_
 
-- Added: AWS Security Top 10 (`steampipe check all`)
-
+- Added: AWS Account Security Top 10 benchmark (`steampipe check benchmark.account_security`)
