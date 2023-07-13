@@ -76,9 +76,6 @@ mod "aws_security_top_10" {
   }
 
   require {
-    plugin "aws" {
-      min_version = "0.101.0"
-    }
     mod "github.com/turbot/steampipe-mod-aws-compliance" {
       version = ">=0.66.0"
       args = {
