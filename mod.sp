@@ -1,7 +1,7 @@
 locals {
   aws_top_10_tags = {
-    category = " AWS Security Top 10"
-    service = " AWS Security Top 10"
+    category = "AWS Security Top 10"
+    service = "AWS"
     type = "Benchmark"
   }
 }
@@ -62,7 +62,7 @@ locals {
 
 mod "aws_security_top_10" {
   # hub metadata
-  title         = " AWS Security Top 10"
+  title         = "AWS Security Top 10"
   description   = "Check the top security items recommended on the AWS Security blog."
   #color         = "#FF9900"
   #documentation = file("./docs/index.md")
