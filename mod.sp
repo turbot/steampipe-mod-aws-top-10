@@ -1,6 +1,6 @@
 locals {
   aws_top_10_tags = {
-    category = "AWS Security Top 10"
+    category = "Security"
     service = "AWS"
     type = "Benchmark"
   }
