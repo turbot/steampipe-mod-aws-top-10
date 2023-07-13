@@ -1,12 +1,12 @@
-# AWS Security Top 10 Mod for Steampipe
+# AWS Top 10 Mod for Steampipe
 
-In [Build a custom benchmark for the top 10 AWS security tips](https://steampipie.io/blog/aws-security-top-10) we show one approach to mapping the [Top 10 security items to improve in your AWS account](https://aws.amazon.com/blogs/security/top-10-security-items-to-improve-in-your-aws-account/) to Steampipe controls. We provide this mod as an example that we encourage you to [reuse and remix](https://steampipe.io/blog/remixing-dashboards).
+The AWS Top 10 mod contains top 10 lists implemented as benchmarks containing best practices for security, cost, operations, and more.
 
 Run checks in a dashboard:
-![image](https://raw.githubusercontent.com/turbot/steampipe-mod-aws-security-top-10/main/docs/aws-top-10-dashboard.png)
+![image](https://raw.githubusercontent.com/turbot/steampipe-mod-aws-top-10/main/docs/aws-top-10-dashboard.png)
 
-Includes support for the items recommended on the [AWS Security](https://aws.amazon.com/blogs/security/top-10-security-items-to-improve-in-your-aws-account/) blog:
-![image](https://d2908q01vomqb2.cloudfront.net/22d200f8670dbdb3e253a90eee5098477c95c23d/2020/03/19/10-Security-Itemsb-Figure-1.png)
+Includes support for:
+- [Top 10 security items to improve in your AWS account](https://aws.amazon.com/blogs/security/top-10-security-items-to-improve-in-your-aws-account/)
 
 ## Getting started
 
@@ -68,7 +68,13 @@ steampipe check all
 Run a single benchmark:
 
 ```sh
-steampipe check benchmark.no_secrets
+steampipe check benchmark.account_security
+```
+
+Run a benchmark for a specific item:
+
+```sh
+steampipe check benchmark.account_security_accurate_account_info
 ```
 
 Different output formats are also available, for more information please see
@@ -105,5 +111,4 @@ Please see the [contribution guidelines](https://github.com/turbot/steampipe/blo
 Want to help but not sure where to start? Pick up one of the a`help wanted` issues:
 
 - [Steampipe](https://github.com/turbot/steampipe/labels/help%20wanted)
-- [AWS Security Top 10 Mod](https://github.com/turbot/steampipe-mod-aws-security-top-10/labels/help%20wanted)
-
+- [AWS Top 10 Mod](https://github.com/turbot/steampipe-mod-aws-top-10/labels/help%20wanted)

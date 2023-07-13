@@ -4,13 +4,7 @@ repository: "https://github.com/turbot/steampipe-mod-aws-top-10"
 
 # AWS Top 10 Mod
 
-Run security controls across all your AWS accounts to look for resources that are publicly accessible resources, shared with untrusted accounts, have insecure network configurations, and more.
-
-<img src="https://raw.githubusercontent.com/turbot/steampipe-mod-aws-top-10/main/docs/images/aws_top_10_dashboard.png" width="50%" type="thumbnail"/>
-<img src="https://raw.githubusercontent.com/turbot/steampipe-mod-aws-top-10/main/docs/images/aws_top_10_network_access_dashboard.png" width="50%" type="thumbnail"/>
-<img src="https://raw.githubusercontent.com/turbot/steampipe-mod-aws-top-10/main/docs/images/aws_top_10_public_access_dashboard.png" width="50%" type="thumbnail"/>
-<img src="https://raw.githubusercontent.com/turbot/steampipe-mod-aws-top-10/main/docs/images/aws_top_10_shared_access_dashboard.png" width="50%" type="thumbnail"/>
-<img src="https://raw.githubusercontent.com/turbot/steampipe-mod-aws-top-10/main/docs/images/aws_top_10_public_access_output.png" width="50%" type="thumbnail"/>
+The AWS Top 10 mod contains top 10 lists implemented as benchmarks containing best practices for security, cost, operations, and more.
 
 ## References
 
@@ -49,7 +43,19 @@ git clone https://github.com/turbot/steampipe-mod-aws-top-10.git
 cd steampipe-mod-aws-top-10
 ```
 
+Install mod dependencies:
+
+```sh
+steampipe mod install
+```
+
 ### Usage
+
+Before running any benchmarks, it's recommended to generate your AWS credential report:
+
+```sh
+aws iam generate-credential-report
+```
 
 Start your dashboard server to get started:
 
@@ -73,13 +79,13 @@ steampipe check all
 Run a single benchmark:
 
 ```sh
-steampipe check benchmark.public_access
+steampipe check benchmark.account_security
 ```
 
-Run a specific control:
+Run a benchmark for a specific item:
 
 ```sh
-steampipe check control.ec2_instance_ami_prohibit_public_access
+steampipe check benchmark.account_security_accurate_account_info
 ```
 
 Different output formats are also available, for more information please see
