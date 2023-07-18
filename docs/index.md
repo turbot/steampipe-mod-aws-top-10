@@ -4,7 +4,7 @@ repository: "https://github.com/turbot/steampipe-mod-aws-top-10"
 
 # AWS Top 10 Mod
 
-The AWS Top 10 mod contains top 10 lists implemented as benchmarks containing best practices for security, cost, operations, and more.
+The AWS Top 10 mod provides curated sets of benchmarks and controls for security, cost, operations, and more.
 
 ## References
 
@@ -97,48 +97,31 @@ This mod uses the credentials configured in the [Steampipe AWS plugin](https://h
 
 ### Configuration
 
-Several benchmarks have [input variables](https://steampipe.io/docs/using-steampipe/mod-variables) that can be configured to better match your environment and requirements. Each variable has a default defined in its source file, e.g., `perimeter/shared_access.sp`, but these can be overwritten in several ways:
-
-- Copy and rename the `steampipe.spvars.example` file to `steampipe.spvars`, and then modify the variable values inside that file
-- Pass in a value on the command line:
-
-  ```shell
-  steampipe check benchmark.shared_access --var='trusted_accounts=["123456789012", "123123123123"]'
-  ```
-
-- Set an environment variable:
-
-  ```shell
-  SP_VAR_trusted_accounts='["123456789012", "123123123123"]' steampipe check control.ram_resource_shared_with_trusted_accounts
-  ```
-
-  - Note: When using environment variables, if the variable is defined in `steampipe.spvars` or passed in through the command line, either of those will take precedence over the environment variable value. For more information on variable definition precedence, please see the link below.
-
-These are only some of the ways you can set variables. For a full list, please see [Passing Input Variables](https://steampipe.io/docs/using-steampipe/mod-variables#passing-input-variables).
+No extra configuration is required.
 
 ### Common and Tag Dimensions
 
-The benchmark queries use common properties (like `account_id`, `connection_name` and `region`) and tags that are defined in the form of a default list of strings in the `mod.sp` file. These properties can be overwritten in several ways:
+The benchmark queries use common properties (like `account_id`, `connection_name` and `region`) and tags that are defined in the dependent [AWS Compliance mod](https://github.com/turbot/steampipe-mod-aws-compliance) and [AWS Perimeter mod](https://github.com/turbot/steampipe-mod-aws-perimeter) . These properties can be executed in the following ways:
 
 - Copy and rename the `steampipe.spvars.example` file to `steampipe.spvars`, and then modify the variable values inside that file
 - Pass in a value on the command line:
 
   ```shell
-  steampipe check benchmark.public_access_settings --var 'common_dimensions=["account_id", "connection_name", "region"]'
+  steampipe check benchmark.account_security_limit_security_groups --var 'common_dimensions=["account_id", "connection_name", "region"]'
   ```
 
   ```shell
-  steampipe check benchmark.public_access_settings --var 'tag_dimensions=["Environment", "Owner"]'
+  steampipe check benchmark.account_security_limit_security_groups --var 'tag_dimensions=["Environment", "Owner"]'
   ```
 
 - Set an environment variable:
 
   ```shell
-  SP_VAR_common_dimensions='["account_id", "connection_name", "region"]' steampipe check control.eks_cluster_endpoint_prohibit_public_access
+  SP_VAR_common_dimensions='["account_id", "connection_name", "region"]' steampipe check benchmark.account_security_limit_security_groups
   ```
 
   ```shell
-  SP_VAR_tag_dimensions='["Environment", "Owner"]' steampipe check control.large_ebs_volumes
+  SP_VAR_tag_dimensions='["Environment", "Owner"]' steampipe check benchmark.account_security_limit_security_groups
   ```
 
 ## Contributing

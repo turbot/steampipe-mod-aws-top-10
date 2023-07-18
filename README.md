@@ -1,6 +1,6 @@
 # AWS Top 10 Mod for Steampipe
 
-The AWS Top 10 mod contains top 10 lists implemented as benchmarks containing best practices for security, cost, operations, and more.
+The AWS Top 10 mod provides curated sets of benchmarks and controls for security, cost, operations, and more.
 
 Run checks in a dashboard:
 ![image](https://raw.githubusercontent.com/turbot/steampipe-mod-aws-top-10/main/docs/aws-top-10-dashboard.png)
@@ -90,14 +90,27 @@ No extra configuration is required.
 
 ### Common Dimensions
 
-The benchmark queries use common properties (like `account_id`, `connection_name` and `region`) that are defined in the dependent [AWS Compliance mod](https://github.com/turbot/steampipe-mod-aws-compliance). These properties can be executed in the following ways:
+The benchmark queries use common properties (like `account_id`, `connection_name` and `region`) and tags that are defined in the dependent [AWS Compliance mod](https://github.com/turbot/steampipe-mod-aws-compliance) and [AWS Perimeter mod](https://github.com/turbot/steampipe-mod-aws-perimeter) . These properties can be executed in the following ways:
 
 - Copy and rename the `steampipe.spvars.example` file to `steampipe.spvars`, and then modify the variable values inside that file
-
 - Pass in a value on the command line:
 
   ```shell
-  steampipe check benchmark.no-secrets --var 'common_dimensions=["account_id", "connection_name", "region"]'
+  steampipe check benchmark.account_security_limit_security_groups --var 'common_dimensions=["account_id", "connection_name", "region"]'
+  ```
+
+  ```shell
+  steampipe check benchmark.account_security_limit_security_groups --var 'tag_dimensions=["Environment", "Owner"]'
+  ```
+
+- Set an environment variable:
+
+  ```shell
+  SP_VAR_common_dimensions='["account_id", "connection_name", "region"]' steampipe check benchmark.account_security_limit_security_groups
+  ```
+
+  ```shell
+  SP_VAR_tag_dimensions='["Environment", "Owner"]' steampipe check benchmark.account_security_limit_security_groups
   ```
 
 ## Contributing

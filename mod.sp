@@ -57,7 +57,7 @@ locals {
 mod "aws_top_10" {
   # hub metadata
   title         = "AWS Top 10"
-  description   = "Check the top security items recommended on the AWS Security blog."
+  description   = "The AWS Top 10 mod provides curated sets of benchmarks and controls for security, cost, operations, and more."
   color         = "#FF9900"
   documentation = file("./docs/index.md")
   # TODO: Create this image
@@ -66,7 +66,7 @@ mod "aws_top_10" {
 
   opengraph {
     title       = "Steampipe Mod for AWS Top 10"
-    description = "Run controls across all of your AWS accounts and regions to check the top 10 security items recommended on the AWS Security blog."
+    description = "The AWS Top 10 mod provides curated sets of benchmarks and controls for security, cost, operations, and more."
     image       = "/images/mods/turbot/aws-top-10-social-graphic.png"
   }
 
