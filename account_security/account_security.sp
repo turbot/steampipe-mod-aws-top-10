@@ -19,7 +19,8 @@ benchmark "account_security" {
     benchmark.account_security_centralize_cloudtrail_logs,
     benchmark.account_security_validate_iam_roles,
     benchmark.account_security_take_action_on_findings,
-    benchmark.account_security_rotate_keys
+    benchmark.account_security_rotate_keys,
+    benchmark.account_security_dev_cycle
   ]
 
   tags = local.account_security_common_tags
@@ -29,6 +30,7 @@ benchmark "account_security_accurate_account_info" {
   title = "1. Accurate account information"
   description = "When AWS needs to contact you about your AWS account, we use the contact information defined in the AWS Management Console, including the email address used to create the account and those listed under Alternate Contacts."
   children = [
+    # TODO: Replace this with a control and query in this mod
     aws_compliance.control.cis_v150_1_2
   ]
 
@@ -106,6 +108,7 @@ benchmark "account_security_validate_iam_roles" {
   title = "7. Validate IAM roles"
   description = "As you operate your AWS accounts to iterate and build capability, you may end up creating multiple IAM roles that you discover later you don't need."
   children = [
+    # TODO: Replace this with a control and query in this mod
     aws_compliance.control.cis_v150_1_20,
     aws_compliance.control.iam_access_analyzer_enabled_without_findings,
     aws_perimeter.control.iam_role_trust_policy_prohibit_public_access
@@ -130,8 +133,19 @@ benchmark "account_security_rotate_keys" {
   title = "9. Rotate keys"
   description = "If you need to use access keys rather than roles, you should rotate them regularly."
   children = [
+    # TODO: Replace this with a control and query in this mod
     aws_compliance.control.cis_v150_1_13,
     aws_compliance.control.iam_user_access_key_age_90
+  ]
+
+  tags = local.account_security_common_tags
+}
+
+benchmark "account_security_dev_cycle" {
+  title = "10. Be involved in the dev cycle"
+  description = "Raise the security culture of your organization by being involved in the dev cycle."
+  children = [
+    control.manual_control
   ]
 
   tags = local.account_security_common_tags

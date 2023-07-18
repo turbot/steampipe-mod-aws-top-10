@@ -6,6 +6,8 @@ repository: "https://github.com/turbot/steampipe-mod-aws-top-10"
 
 The AWS Top 10 mod provides curated sets of benchmarks and controls for security, cost, operations, and more.
 
+## TODO: Add dashboard images here
+
 ## References
 
 [AWS](https://aws.amazon.com/) provides on-demand cloud computing platforms and APIs to authenticated customers on a metered pay-as-you-go basis.
