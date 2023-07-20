@@ -41,10 +41,10 @@ benchmark "account_security_use_mfa" {
   description = "MFA is the best way to protect accounts from inappropriate access. Always set up MFA on your Root user and AWS Identity and Access Management (IAM) users."
   children = [
     aws_compliance.control.iam_root_user_mfa_enabled,
-    control.iam_root_user_virtual_mfa,
     aws_compliance.control.iam_user_console_access_mfa_enabled,
+    aws_compliance.control.iam_user_mfa_enabled,
     aws_compliance.control.iam_user_with_administrator_access_mfa_enabled,
-    aws_compliance.control.iam_user_mfa_enabled
+    control.iam_root_user_virtual_mfa
   ]
 
   tags = local.account_security_common_tags
@@ -54,11 +54,11 @@ benchmark "account_security_no_hardcoded_secrets" {
   title = "3. No hard-coding secrets"
   description = "When you build applications on AWS, you can use AWS IAM roles to deliver temporary, short-lived credentials for calling AWS services. However, some applications require longer-lived credentials, such as database passwords or other API keys. If this is the case, you should never hard code these secrets in the application or store them in source code."
   children = [
-    aws_compliance.control.cloudformation_stack_output_no_secrets,
-    aws_compliance.control.ec2_instance_user_data_no_secrets,
-    aws_compliance.control.ecs_task_definition_container_environment_no_secret,
     aws_compliance.control.autoscaling_ec2_launch_configuration_no_sensitive_data,
-    aws_compliance.control.codebuild_project_plaintext_env_variables_no_sensitive_aws_values
+    aws_compliance.control.cloudformation_stack_output_no_secrets,
+    aws_compliance.control.codebuild_project_plaintext_env_variables_no_sensitive_aws_values,
+    aws_compliance.control.ec2_instance_user_data_no_secrets,
+    aws_compliance.control.ecs_task_definition_container_environment_no_secret
   ]
 
   tags = local.account_security_common_tags
