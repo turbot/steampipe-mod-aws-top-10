@@ -2,10 +2,11 @@
 
 The AWS Top 10 mod provides curated sets of benchmarks and controls for security, cost, operations, and more.
 
-## TODO: Add dashboard images here
-
 Run checks in a dashboard:
 ![image](https://raw.githubusercontent.com/turbot/steampipe-mod-aws-top-10/main/docs/aws-top-10-dashboard.png)
+
+<!-- Or in a terminal:
+![image](https://raw.githubusercontent.com/turbot/steampipe-mod-aws-top-10/main/docs/aws-top-10-terminal.png) -->
 
 Includes support for:
 - [Top 10 security items to improve in your AWS account](https://aws.amazon.com/blogs/security/top-10-security-items-to-improve-in-your-aws-account/)

@@ -60,14 +60,12 @@ mod "aws_top_10" {
   description   = "The AWS Top 10 mod provides curated sets of benchmarks and controls for security, cost, operations, and more."
   color         = "#FF9900"
   documentation = file("./docs/index.md")
-  # TODO: Create this image and upload to Hub
   icon          = "/images/mods/turbot/aws-top-10.svg"
   categories    = ["aws", "public cloud", "security"]
 
   opengraph {
     title       = "Steampipe Mod for AWS Top 10"
     description = "The AWS Top 10 mod provides curated sets of benchmarks and controls for security, cost, operations, and more."
-    # TODO: Create this image and upload to Hub
     image       = "/images/mods/turbot/aws-top-10-social-graphic.png"
   }
 
