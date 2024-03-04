@@ -20,3 +20,7 @@
 
 # Ignore Desktop Services Store files
 .DS_Store
+
+# Powerpipe variable files
+*.ppvars
+*.auto.ppvars
