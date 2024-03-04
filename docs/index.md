@@ -82,7 +82,7 @@ Different output formats are also available, for more information please see
 
 ### Common and Tag Dimensions
 
-The benchmark queries use common properties (like `account_id`, `connection_name` and `region`) and tags that are defined in the dependent [AWS Compliance mod](https://github.com/turbot/steampipe-mod-aws-compliance) and [AWS Perimeter mod](https://github.com/turbot/steampipe-mod-aws-perimeter) . These properties can be executed in the following ways:
+The benchmark queries use common properties (like `account_id`, `connection_name` and `region`) and tags that are defined in the dependent [AWS Compliance mod](https://github.com/turbot/steampipe-mod-aws-compliance) and [AWS Perimeter mod](https://github.com/turbot/steampipe-mod-aws-perimeter). These properties can be executed in the following ways:
 
 - Copy and rename the `powerpipe.ppvars.example` file to `powerpipe.ppvars`, and then modify the variable values inside that file
 - Pass in a value on the command line:
