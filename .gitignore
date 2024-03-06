@@ -14,9 +14,14 @@
 
 # Steampipe mod depdencies
 .steampipe
+.powerpipe
 
 # Cache json files
 *.cache.json
 
 # Ignore Desktop Services Store files
 .DS_Store
+
+# Powerpipe variable files
+*.ppvars
+*.auto.ppvars
