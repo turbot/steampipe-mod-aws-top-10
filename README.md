@@ -1,4 +1,9 @@
-# AWS Top 10 Mod for Steampipe
+# AWS Top 10 Mod for Powerpipe
+
+> [!IMPORTANT]  
+> [Powerpipe](https://powerpipe.io) is now the preferred way to run this mod! [Migrating from Steampipe →](https://powerpipe.io/blog/migrating-from-steampipe)
+>
+> All v0.x versions of this mod will work in both Steampipe and Powerpipe, but v1.0.0 onwards will be in Powerpipe format only.
 
 The AWS Top 10 mod provides curated sets of benchmarks and controls for security, cost, operations, and more.
 
@@ -7,9 +12,6 @@ Run checks in a dashboard:
 
 Or in a terminal:
 ![image](https://raw.githubusercontent.com/turbot/steampipe-mod-aws-top-10/main/docs/aws-top-10-terminal.png)
-
-Includes support for:
-- [Top 10 security items to improve in your AWS account](https://aws.amazon.com/blogs/security/top-10-security-items-to-improve-in-your-aws-account/)
 
 ## Documentation
 
@@ -58,7 +60,7 @@ Start the dashboard server:
 powerpipe server
 ```
 
-Browse and view your dashboards at **https://localhost:9033**.
+Browse and view your dashboards at **http://localhost:9033**.
 
 ### Running Checks in Your Terminal
 
@@ -77,12 +79,6 @@ Run a benchmark:
 powerpipe benchmark run account_security
 ```
 
-Run a benchmark for a specific item:
-
-```sh
-powerpipe benchmark run benchmark.account_security_accurate_account_info
-```
-
 Different output formats are also available, for more information please see
 [Output Formats](https://powerpipe.io/docs/reference/cli/benchmark#output-formats).
 
@@ -90,26 +86,26 @@ Different output formats are also available, for more information please see
 
 The benchmark queries use common properties (like `account_id`, `connection_name` and `region`) and tags that are defined in the dependent [AWS Compliance mod](https://github.com/turbot/steampipe-mod-aws-compliance) and [AWS Perimeter mod](https://github.com/turbot/steampipe-mod-aws-perimeter). These properties can be executed in the following ways:
 
-- Copy and rename the `powerpipe.ppvars.example` file to `powerpipe.ppvars`, and then modify the variable values inside that file
-- Pass in a value on the command line:
+It's easiest to setup your vars file, starting with the sample:
 
-  ```sh
-  powerpipe benchmark run account_security_limit_security_groups --var 'common_dimensions=["account_id", "connection_name", "region"]'
-  ```
+```sh
+cp steampipe.spvars.example steampipe.spvars
+vi steampipe.spvars
+```
 
-  ```sh
-  powerpipe benchmark run account_security_limit_security_groups --var 'tag_dimensions=["Environment", "Owner"]'
-  ```
+Alternatively you can pass variables on the command line:
 
-- Set an environment variable:
+```sh
+powerpipe benchmark run account_security_limit_security_groups --var 'tag_dimensions=["Environment", "Owner"]'
+```
 
-  ```sh
-  PP_VAR_common_dimensions='["account_id", "connection_name", "region"]' powerpipe benchmark run account_security_limit_security_groups
-  ```
+Or through environment variables:
 
-  ```sh
-  PP_VAR_tag_dimensions='["Environment", "Owner"]' powerpipe benchmark run account_security_limit_security_groups
-  ```
+```sh
+export PP_VAR_common_dimensions='["account_id", "connection_name", "region"]'
+export PP_VAR_tag_dimensions='["Environment", "Owner"]'
+powerpipe benchmark run account_security_limit_security_groups
+```
 
 ## Open Source & Contributing
 

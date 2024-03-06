@@ -1,7 +1,7 @@
 mod "aws_top_10" {
-  # hub metadata
+  # Hub metadata
   title         = "AWS Top 10"
-  description   = "The AWS Top 10 mod provides curated sets of benchmarks and controls for security, cost, operations, and more."
+  description   = "The AWS Top 10 mod provides curated sets of benchmarks and controls for security, cost, operations, and more using Powerpipe and Steampipe."
   color         = "#FF9900"
   documentation = file("./docs/index.md")
   icon          = "/images/mods/turbot/aws-top-10.svg"
@@ -9,7 +9,7 @@ mod "aws_top_10" {
 
   opengraph {
     title       = "Powerpipe Mod for AWS Top 10"
-    description = "The AWS Top 10 mod provides curated sets of benchmarks and controls for security, cost, operations, and more."
+    description = "The AWS Top 10 mod provides curated sets of benchmarks and controls for security, cost, operations, and more using Powerpipe and Steampipe."
     image       = "/images/mods/turbot/aws-top-10-social-graphic.png"
   }
 
