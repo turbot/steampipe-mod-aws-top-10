@@ -14,6 +14,7 @@
 
 # Steampipe mod depdencies
 .steampipe
+.powerpipe
 
 # Cache json files
 *.cache.json
